@@ -6,12 +6,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    dialog = new Dialog(this);
-    dialog ->show();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::on_pb_openDialog_clicked()
+{
+    dialog = new Dialog(this);
+    dialog->show();
 }
 
