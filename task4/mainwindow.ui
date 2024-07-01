@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>401</height>
+    <width>336</width>
+    <height>478</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,20 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="lb_time">
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;Segoe UI&quot;;</string>
+      </property>
       <property name="text">
        <string>Время</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QTextBrowser" name="tb_round_time"/>
+     <widget class="QTextBrowser" name="tb_round_time">
+      <property name="styleSheet">
+       <string notr="true">font: 11pt &quot;Segoe UI&quot;;</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pb_start_stop">
@@ -46,6 +53,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pb_exit">
+      <property name="text">
+       <string>Выход</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -53,7 +67,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>278</width>
+     <width>336</width>
      <height>22</height>
     </rect>
    </property>
@@ -61,5 +75,22 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pb_exit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>435</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>138</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
