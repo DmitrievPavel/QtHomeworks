@@ -52,7 +52,7 @@ public:
 
 signals:
 
-   void sig_SendDataFromDB(QSqlQueryModel *queryModel);
+   void sig_SendDataFromDB(QSqlQueryModel *queryModel,QSqlTableModel *tableModel, int typeR);
    void sig_SendStatusConnection(bool);
 
 

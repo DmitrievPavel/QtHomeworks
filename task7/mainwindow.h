@@ -23,7 +23,7 @@ public:
 
 
 public slots:
-    void ScreenDataFromDB(QSqlQueryModel *queryModel);
+    void ScreenDataFromDB(QSqlQueryModel *queryModel,QSqlTableModel *tableModel,int typeR);
     void ReceiveStatusConnectionToDB(bool status);
 
 

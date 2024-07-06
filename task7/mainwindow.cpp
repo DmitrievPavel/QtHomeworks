@@ -107,12 +107,15 @@ void MainWindow::on_pb_request_clicked()
  * \param widget
  * \param typeRequest
  */
-void MainWindow::ScreenDataFromDB(QSqlQueryModel *queryModel)
+void MainWindow::ScreenDataFromDB(QSqlQueryModel *queryModel,QSqlTableModel *tableModel, int typeR)
 {
-
-    ui->tb_result->setModel(queryModel);
-    ui->tb_result->show();
-
+    if(typeR == 0){
+        ui->tb_result->setModel(tableModel);
+        ui->tb_result->show();
+    }else{
+        ui->tb_result->setModel(queryModel);
+        ui->tb_result->show();
+    }
 
 }
 /*!

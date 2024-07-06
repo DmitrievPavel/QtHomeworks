@@ -46,7 +46,7 @@ void DataBase::ConnectToDataBase(QVector<QString> data)
 
 
     bool status;
-    status = dataBase->open( );
+    status = dataBase->open();
     if(status) {
 
         tableModel->setTable(DB_NAME);
@@ -78,14 +78,13 @@ void DataBase::RequestToDB(QString request, int typeR)
         tableModel->select();
         tableModel->setHeaderData(0, Qt::Horizontal, tr("Название фильма"));
         tableModel->setHeaderData(1, Qt::Horizontal, tr("Описание фильма"));
-        emit sig_SendDataFromDB(tableModel);
     }else {
         queryModel->setQuery(request);
         queryModel->setHeaderData(0, Qt::Horizontal, tr("Название фильма"));
         queryModel->setHeaderData(1, Qt::Horizontal, tr("Описание фильма"));
-        emit sig_SendDataFromDB(queryModel);
-    }
 
+    }
+    emit sig_SendDataFromDB(queryModel,tableModel,typeR);
 }
 
 /*!
