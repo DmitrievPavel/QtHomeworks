@@ -6,7 +6,6 @@ DataBase::DataBase(QObject *parent)
 
     dataBase = new QSqlDatabase();
     queryModel = new QSqlQueryModel();
-    tableModel = new QSqlTableModel();
 
 }
 
@@ -47,10 +46,6 @@ void DataBase::ConnectToDataBase(QVector<QString> data)
 
     bool status;
     status = dataBase->open();
-    if(status) {
-
-        tableModel->setTable(DB_NAME);
-    }
     emit sig_SendStatusConnection(status);
 
 }
@@ -74,12 +69,14 @@ void DataBase::RequestToDB(QString request, int typeR)
 {
 
     if(typeR == 0){
+        tableModel = new QSqlTableModel(this,*dataBase);
+        tableModel->setTable("film");
         tableModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        tableModel->setHeaderData(1, Qt::Horizontal, tr("Название фильма"));
+        tableModel->setHeaderData(2, Qt::Horizontal, tr("Описание фильма"));
         tableModel->select();
-        tableModel->setHeaderData(0, Qt::Horizontal, tr("Название фильма"));
-        tableModel->setHeaderData(1, Qt::Horizontal, tr("Описание фильма"));
     }else {
-        queryModel->setQuery(request);
+        queryModel->setQuery(request,*dataBase);
         queryModel->setHeaderData(0, Qt::Horizontal, tr("Название фильма"));
         queryModel->setHeaderData(1, Qt::Horizontal, tr("Описание фильма"));
 

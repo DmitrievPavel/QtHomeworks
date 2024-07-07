@@ -111,9 +111,16 @@ void MainWindow::ScreenDataFromDB(QSqlQueryModel *queryModel,QSqlTableModel *tab
 {
     if(typeR == 0){
         ui->tb_result->setModel(tableModel);
+        for(int i = 0; i < 15; ++i){
+            if(i == 1 || i == 2) continue;
+            ui->tb_result->hideColumn(i);
+        }
+        ui->tb_result->resizeRowsToContents();
         ui->tb_result->show();
     }else{
         ui->tb_result->setModel(queryModel);
+        ui->tb_result->showColumn(0);
+        ui->tb_result->resizeRowsToContents();
         ui->tb_result->show();
     }
 
@@ -142,4 +149,10 @@ void MainWindow::ReceiveStatusConnectionToDB(bool status)
 }
 
 
+
+
+void MainWindow::on_pb_clear_clicked()
+{
+    ui->tb_result->setModel(nullptr);
+}
 
