@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
         timer->start(TIMER_DELAY);
 
     });
+    ui->pb_stop->setEnabled(false);
+
 
 }
 
@@ -39,6 +41,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_pb_start_clicked()
 {
     timer->start(TIMER_DELAY);
+    ui->pb_stop->setEnabled(true);
+    ui->pb_start->setEnabled(false);
 }
 
 
@@ -59,6 +63,8 @@ void MainWindow::DisplayTime(QDateTime data)
 void MainWindow::on_pb_stop_clicked()
 {
     timer->stop();
+    ui->pb_start->setEnabled(true);
+    ui->pb_stop->setEnabled(false);
 }
 
 void MainWindow::DatagramInfo(QString adress, qint64 size)
@@ -75,6 +81,7 @@ void MainWindow::on_pb_send_clicked()
         QDataStream outStr(&dataToSend, QIODevice::WriteOnly);
         outStr << strData;
         udpWorker->SendUserDatagram(dataToSend);
+        ui->te_input->clear();
     }
 }
 
